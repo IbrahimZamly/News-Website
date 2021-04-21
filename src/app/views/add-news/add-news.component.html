@@ -1,0 +1,31 @@
+<form #myForm='ngForm' class="container mt-5" (ngSubmit)='formSubmit(myForm.value)'>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input
+      type="text"
+      ngModel
+      name="title"
+      #title="ngModel"
+      class="form-control"
+      id="title"
+      required>
+    </div>
+    <div class="errors d-flex justify-content-center" *ngIf='title.invalid && title.touched'>
+        <div>*Title Is Required*</div>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input
+        type="text"
+        ngModel
+        name="description"
+        #description="ngModel"
+        class="form-control"
+        id="description"
+        required>
+      </div>
+      <div class="errors d-flex justify-content-center" *ngIf='description.invalid && description.touched'>
+          <div>*Description Is Required*</div>
+      </div>
+    <button type="submit" class="btn btn-primary" [disabled]='myForm.invalid'>Submit</button>
+  </form>

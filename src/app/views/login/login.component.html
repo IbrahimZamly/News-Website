@@ -1,0 +1,30 @@
+<form #myForm='ngForm' (ngSubmit)='login(myForm.value)' class="container pt-5">
+    <h3>Please Login</h3>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+       type="email"
+       class="form-control"
+       ngModel
+       name="email"
+       id="email"
+       #email='ngModel'
+       email
+       required >
+      <div class="errors d-flex justify-content-center" *ngIf='email.touched && email.invalid'>
+          <div *ngIf='email.errors?.required'>*Email is required*</div>
+          <div *ngIF='email.errors?.email'>*Please Enter Valid Email*</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" ngModel name="password" #password='ngModel' required>
+      <div class="errors d-flex justify-content-center" *ngIf='password.touched && password.invalid'>
+          <div *ngIf='password.errors?.required'>*Password is required*</div>
+      </div>
+    </div>
+      <div class="errors d-flex justify-content-center">
+        <div *ngIf='invalidLogin'>*Invalid Email Or Password*</div>
+      </div>
+    <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+  </form>

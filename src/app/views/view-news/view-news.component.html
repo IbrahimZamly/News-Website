@@ -1,0 +1,30 @@
+<table class="table table-striped mt-3">
+    <thead>
+      <tr class="text-center thead-secondary">
+        <th scope="col">Title</th>
+        <th scope="col"> Description</th>
+        <th scope="col"> Delete</th>
+        <th scope="col"> Edit</th>
+        <th scope="col"> Profile</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr style="font-size: 18px;" class="text-capitalize" *ngFor='let new of news'>
+        <td>{{new.title}}</td>
+        <td>{{new.description}}</td>
+        <td>
+          <button class="btn btn-primary" (click)='deleteNews(new)'>Delete</button>
+        </td>
+        <td>
+          <a routerLink='/edit-news/{{new._id}}'>
+            <button class="btn btn-primary">Update</button>
+          </a>
+        </td>
+        <td>
+            <a routerLink='/profile'>
+              <button class="btn btn-primary">Profile</button>
+            </a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
